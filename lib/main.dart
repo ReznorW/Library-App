@@ -77,6 +77,65 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
+      drawer: Drawer(
+        // Add a ListView to the drawer. This ensures the user can scroll
+        // through the options in the drawer if there isn't enough vertical
+        // space to fit everything.
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              child: null,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('assets/the_lane.png'),
+                    fit: BoxFit.fill
+                ),
+              ),
+            ),
+            ListTile(
+              title: Text('Barcode Scanner'),
+              subtitle: Text('Scan the barcode of a book.'),
+              leading: Icon(
+                Icons.camera_alt_outlined
+              ),
+              onTap: () {
+                // Update the state of the app
+                // ...
+                // Then close the drawer
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('Manual Lookup'),
+              subtitle: Text('Manually find a book.'),
+              leading: Icon(
+                  Icons.article_outlined
+              ),
+              onTap: () {
+                // Update the state of the app
+                // ...
+                // Then close the drawer
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('Map'),
+              subtitle: Text('Open the library map.'),
+              leading: Icon(
+                  Icons.map
+              ),
+              onTap: () {
+                // Update the state of the app
+                // ...
+                // Then close the drawer
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
+      ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.

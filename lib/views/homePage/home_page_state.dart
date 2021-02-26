@@ -58,9 +58,7 @@ class HomePageState extends State<HomePage> {
               leading: Icon(
                   Icons.article_outlined
               ),
-              onTap: (
-
-                  ) {
+              onTap: () {
                 // Update the state of the app
                 // ...
                 // Then close the drawer

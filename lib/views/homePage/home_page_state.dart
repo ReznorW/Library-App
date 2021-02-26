@@ -16,6 +16,9 @@ class HomePageState extends State<HomePage> {
   HomePageState(){
     getBooks();
   }
+
+  TextEditingController searchController = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,6 +85,30 @@ class HomePageState extends State<HomePage> {
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: Column(
+          children: <Widget>[
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+        Container(
+          child: TextField(
+            controller: searchController,
+            decoration: InputDecoration(
+            border: InputBorder.none,
+            hintText: 'Enter a search term'),
+      ),width: MediaQuery.of(context).size.width * 0.5,
+    ),
+  ]),
+        Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                child: Text(searchController.text),
+              ),
+            ]),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: getBookRows(bookList, context),
+
           // Column is also a layout widget. It takes a list of children and
           // arranges them vertically. By default, it sizes itself to fit its
           // children horizontally, and tries to be as tall as its parent.
@@ -96,10 +123,9 @@ class HomePageState extends State<HomePage> {
           // center the children vertically; the main axis here is the vertical
           // axis because Columns are vertical (the cross axis would be
           // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: getBookRows(bookList, context),
-        ),
-      ),
+          ),
+        ]),
+      )
     );
   }
 
@@ -117,5 +143,22 @@ class HomePageState extends State<HomePage> {
       book.title,
       style: Theme.of(context).textTheme.headline4,
     );
+  }
+  List<String> getBookRowsString(List<Book> listOfBooks, BuildContext context){
+    List<String> bookNames = new List<String>();
+    if (listOfBooks != null) {
+      listOfBooks.forEach((book) {
+        bookNames.add(book.title);
+      });
+    }
+    return bookNames;
+  }
+  List<String> getManualLookup(String searchedTerm, BuildContext context){
+    List<String> books = getBookRowsString(bookList, context);
+    for (var curBook in books) {
+      if(curBook.contains(searchedTerm)){
+        //Add a curBook to widget list then return
+      }
+    }
   }
 }

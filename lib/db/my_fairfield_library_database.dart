@@ -7,10 +7,10 @@ import 'package:sqflite/sqflite.dart';
 class MyFairfieldLibraryDatabase {
   static final MyFairfieldLibraryDatabase _singleton = MyFairfieldLibraryDatabase._internal();
 
-  static Future<Database> database;
+  static Database _database;
 
   factory MyFairfieldLibraryDatabase(){
-    database = openMyFairfieldLibraryDatabase();
+    openMyFairfieldLibraryDatabase().then((value) => _database = value);
     return _singleton;
   }
 
@@ -32,7 +32,7 @@ class MyFairfieldLibraryDatabase {
     return "CREATE TABLE books(id INTEGER PRIMARY KEY, title TEXT)";
   }
 
-  Future<Database> getDatabase(){
-    return MyFairfieldLibraryDatabase.database;
+  Database getDatabase(){
+    return MyFairfieldLibraryDatabase._database;
   }
 }

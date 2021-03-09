@@ -7,16 +7,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:my_fairfield_library/main.dart';
-import 'package:my_fairfield_library/main.dart';
-import 'package:my_fairfield_library/main.dart';
-import 'package:my_fairfield_library/views/my_home_page.dart';
+import 'file:///C:/Users/vance/Documents/StudioProjects/Library-App/lib/my_fairfield_app.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(MyHomePage());
+    await tester.pumpWidget(MyFairfieldApp());
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);

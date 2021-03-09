@@ -1,4 +1,4 @@
-import 'package:my_fairfield_library/db/book_database.dart';
+import 'package:my_fairfield_library/db/datastores/book_datastore.dart';
 import 'package:my_fairfield_library/models/book.dart';
 
 void addTestData() async {
